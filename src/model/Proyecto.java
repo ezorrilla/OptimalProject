@@ -1,10 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Proyecto {
     //atributos
     private String empresa;
     private String actividad;
-    private Obra[] obras;
+    private ArrayList<Obra> obras = new ArrayList<Obra>();
     private RecursoMaterial recursoMaterial;
     private RecursoHumano recursoHumano;
     
@@ -24,11 +26,11 @@ public class Proyecto {
         this.actividad = actividad;
     }
 
-    public Obra[] getObras() {
+    public ArrayList<Obra> getObras() {
         return obras;
     }
 
-    public void setObras(Obra[] obras) {
+    public void setObras(ArrayList<Obra> obras) {
         this.obras = obras;
     }
 

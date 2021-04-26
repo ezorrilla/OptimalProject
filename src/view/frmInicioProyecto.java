@@ -15,6 +15,7 @@ public class frmInicioProyecto extends javax.swing.JFrame {
      */
     public frmInicioProyecto() {
         initComponents();
+        this.setTitle("Inicia tu proyecto");
         this.getContentPane().setBackground(Color.WHITE);        
     }
 

@@ -1,13 +1,27 @@
 package model;
 
 public class Requerimiento {
-    public Material material;
-    public TrabajoHumano trabajoHumano;
-    
-    public void definirMaterial(String descripcion){
-        Material material = new Material(descripcion);        
+    private int cantidadRMaterial;
+    private int cantidadRHumano;
+
+    public Requerimiento(int cantidadRMaterial, int cantidadRHumano) {
+        this.cantidadRMaterial = cantidadRMaterial;
+        this.cantidadRHumano = cantidadRHumano;
     }
-    public void definirTrabajoHumano(String unidad){
-        TrabajoHumano trabajoHumano = new TrabajoHumano(unidad);        
+    
+    public int getCantidadRMaterial() {
+        return cantidadRMaterial;
+    }
+
+    public void setCantidadRMaterial(int cantidadRMaterial) {
+        this.cantidadRMaterial = cantidadRMaterial;
+    }
+
+    public int getCantidadRHumano() {
+        return cantidadRHumano;
+    }
+
+    public void setCantidadRHumano(int cantidadRHumano) {
+        this.cantidadRHumano = cantidadRHumano;
     }
 }

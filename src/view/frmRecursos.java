@@ -10,6 +10,7 @@ public class frmRecursos extends javax.swing.JFrame {
 
     public frmRecursos() {
         initComponents();
+        this.setTitle("Define tus recursos");
         this.getContentPane().setBackground(Color.WHITE);
     }
 

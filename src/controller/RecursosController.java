@@ -8,7 +8,6 @@ import view.frmRecursos;
 public class RecursosController {
     
     public static frmRecursos form = new frmRecursos();
-    private static Proyecto proyecto = ProcesamientoController.proyecto;
     
     public static void mostrar () { form.setLocationRelativeTo(null); form.setVisible(true);}
     public static void ocultar () { form.setVisible(false);} 
@@ -17,7 +16,7 @@ public class RecursosController {
         RecursoMaterial rmaterial = new RecursoMaterial(form.getTxtDescripcionMaterial().getText(), Integer.parseInt(form.getTxtStockMaterial().getText()) );
         RecursoHumano rrhh = new RecursoHumano(form.getCboUnidadRRHH().getSelectedItem().toString(), Integer.parseInt(form.getTxtDisponibilidadRRHH().getText()) );
         
-        proyecto.setRecursoHumano(rrhh);
-        proyecto.setRecursoMaterial(rmaterial);
+        ProcesamientoController.proyecto.setRecursoHumano(rrhh);
+        ProcesamientoController.proyecto.setRecursoMaterial(rmaterial);
     }
 }
