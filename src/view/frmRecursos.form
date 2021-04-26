@@ -29,50 +29,55 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblImagenEmpresa" min="-2" pref="309" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" min="-2" pref="143" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblImagenEmpresa" min="-2" pref="319" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel1" min="-2" pref="377" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtMaterial2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                          <Component id="txtMaterial" min="-2" pref="159" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtMaterial1" min="-2" pref="105" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" pref="377" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="377" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtStockMaterial" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="txtDescripcionMaterial" min="-2" pref="159" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtDisponibilidadRRHH" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="cboUnidadRRHH" min="-2" pref="153" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" pref="377" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="btnAtras" min="-2" pref="143" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSiguiente" min="-2" pref="143" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,8 +94,8 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtMaterial" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="txtMaterial2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtDescripcionMaterial" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtStockMaterial" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="18" max="-2" attributes="0"/>
@@ -100,8 +105,8 @@
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtMaterial1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="txtDisponibilidadRRHH" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="cboUnidadRRHH" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -112,7 +117,10 @@
                   </Group>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSiguiente" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="btnAtras" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -135,9 +143,9 @@
         <Property name="text" type="java.lang.String" value="Cantidad material que dispones."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMaterial">
+    <Component class="javax.swing.JTextField" name="txtDescripcionMaterial">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Describe tu material"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -172,12 +180,15 @@
         <Property name="text" type="java.lang.String" value="Digita la cantidad de recurso humano que dispones"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMaterial1">
+    <Component class="javax.swing.JTextField" name="txtDisponibilidadRRHH">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Recurso humano que dispones"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisponibilidadRRHHKeyTyped"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cboUnidadRRHH">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
@@ -189,15 +200,19 @@
             <StringItem index="5" value="Personas"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Tipo de unidad de tu recurso humano"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMaterial2">
+    <Component class="javax.swing.JTextField" name="txtStockMaterial">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Recurso material que dispones"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStockMaterialKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -207,7 +222,7 @@
         <Property name="text" type="java.lang.String" value="Nombre material. Por ejemplo: madera, pintura, tela, etc."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSiguiente">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="0" red="0" type="rgb"/>
@@ -229,6 +244,9 @@
         <Property name="focusCycleRoot" type="boolean" value="true"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSiguienteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblImagenEmpresa">
       <Properties>
@@ -240,6 +258,32 @@
           <Dimension value="[981, 768]"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAtras">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="11" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="focusCycleRoot" type="boolean" value="true"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtrasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

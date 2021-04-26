@@ -1,12 +1,12 @@
 package model;
 
 public class Proyecto {
-
-    public String empresa;
-    public String actividad;
-    public Obra[] obras;
-    public RecursoMaterial recursoMaterial;
-    public RecursoHumano recursoHumano;
+    //atributos
+    private String empresa;
+    private String actividad;
+    private Obra[] obras;
+    private RecursoMaterial recursoMaterial;
+    private RecursoHumano recursoHumano;
     
     public String getEmpresa() {
         return empresa;
@@ -48,4 +48,6 @@ public class Proyecto {
         this.recursoHumano = recursoHumano;
     }
     
+    
+    //funciones
 }

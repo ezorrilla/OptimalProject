@@ -12,4 +12,21 @@ public class TrabajoHumano {
     public TrabajoHumano(String descripcion){
         this.unidad = descripcion;
     }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
+
+    public float getCosto() {
+        return costo;
+    }
+
+    public void setCosto(float costo) {
+        this.costo = costo;
+    }
+    
 }

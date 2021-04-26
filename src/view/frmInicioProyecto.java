@@ -125,7 +125,7 @@ public class frmInicioProyecto extends javax.swing.JFrame {
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         InicioProyectoController.btnSiguiente();
         InicioProyectoController.ocultar();
-        RecursosController.mostrar(); //ok
+        RecursosController.mostrar();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     /**

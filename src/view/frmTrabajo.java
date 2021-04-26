@@ -1,15 +1,23 @@
 package view;
 
+import controller.*;
+
 import java.awt.Color;
 
 public class frmTrabajo extends javax.swing.JFrame {
-
     /**
      * Creates new form frmObjetivos
      */
     public frmTrabajo() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
+        
+        String textRHumano = lblRHumano.getText();
+        lblRHumano.setText(textRHumano.replace("{texto}", ProcesamientoController.proyecto.getRecursoHumano().getUnidad().toUpperCase())); 
+    
+        String textMaterial = lblMaterial.getText();
+        lblMaterial.setText(textMaterial.replace("{texto}", ProcesamientoController.proyecto.getRecursoMaterial().getDescripcion().toUpperCase())); 
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -23,14 +31,14 @@ public class frmTrabajo extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txtMaterial2 = new javax.swing.JTextField();
-        txtMaterial3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMaterial4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtMaterial5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        txtObra = new javax.swing.JTextField();
+        txtMaterial = new javax.swing.JTextField();
+        lblMaterial = new javax.swing.JLabel();
+        txtRHumano = new javax.swing.JTextField();
+        lblRHumano = new javax.swing.JLabel();
+        txtCostoObra = new javax.swing.JTextField();
+        lblCostoObra = new javax.swing.JLabel();
+        btnProcesar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
 
@@ -79,32 +87,37 @@ public class frmTrabajo extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        txtMaterial2.setToolTipText("Nombra a tu ");
+        txtObra.setToolTipText("Nombra a tu ");
 
-        txtMaterial3.setToolTipText("Nombra a tu ");
+        txtMaterial.setToolTipText("Nombra a tu ");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Material Requerido");
+        lblMaterial.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblMaterial.setText("{texto} Requerido");
 
-        txtMaterial4.setToolTipText("Nombra a tu ");
+        txtRHumano.setToolTipText("Nombra a tu ");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setText("Recurso Humano Requerido");
+        lblRHumano.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblRHumano.setText("{texto} Requerido");
 
-        txtMaterial5.setToolTipText("Nombra a tu ");
+        txtCostoObra.setToolTipText("Nombra a tu ");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel5.setText("Costo del Trabajo");
+        lblCostoObra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCostoObra.setText("Costo del Trabajo");
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 255));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Procesar Proyecto");
-        jButton2.setToolTipText("");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusCycleRoot(true);
-        jButton2.setFocusPainted(false);
+        btnProcesar.setBackground(new java.awt.Color(0, 0, 255));
+        btnProcesar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnProcesar.setForeground(new java.awt.Color(255, 255, 255));
+        btnProcesar.setText("Procesar Proyecto");
+        btnProcesar.setToolTipText("");
+        btnProcesar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProcesar.setBorderPainted(false);
+        btnProcesar.setFocusCycleRoot(true);
+        btnProcesar.setFocusPainted(false);
+        btnProcesar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcesarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Ejemplo: Casa, Departamento, Edificio, etc");
@@ -143,21 +156,21 @@ public class frmTrabajo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaterial2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtObra, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaterial3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtMaterial4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lblRHumano)
+                                    .addComponent(txtRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaterial5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCostoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCostoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(85, 85, 85))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
@@ -169,7 +182,7 @@ public class frmTrabajo extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProcesar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
@@ -188,7 +201,7 @@ public class frmTrabajo extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMaterial2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtObra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,21 +211,21 @@ public class frmTrabajo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMaterial3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaterial4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCostoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMaterial5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCostoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProcesar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
@@ -221,8 +234,14 @@ public class frmTrabajo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
+        TrabajoController.ocultar();
+        RecursosController.mostrar();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarActionPerformed
+        TrabajoController.ocultar();
+        ProcesamientoController.mostrar();
+    }//GEN-LAST:event_btnProcesarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,21 +281,21 @@ public class frmTrabajo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnProcesar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCostoObra;
     private javax.swing.JLabel lblImagenEmpresa;
-    private javax.swing.JTextField txtMaterial2;
-    private javax.swing.JTextField txtMaterial3;
-    private javax.swing.JTextField txtMaterial4;
-    private javax.swing.JTextField txtMaterial5;
+    private javax.swing.JLabel lblMaterial;
+    private javax.swing.JLabel lblRHumano;
+    private javax.swing.JTextField txtCostoObra;
+    private javax.swing.JTextField txtMaterial;
+    private javax.swing.JTextField txtObra;
+    private javax.swing.JTextField txtRHumano;
     // End of variables declaration//GEN-END:variables
 }

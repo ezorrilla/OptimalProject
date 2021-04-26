@@ -11,4 +11,13 @@ public class RecursoMaterial extends Material{
         super(descripcion);
         this.stock = stock;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
 }
