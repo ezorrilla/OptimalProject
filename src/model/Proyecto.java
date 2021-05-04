@@ -1,12 +1,15 @@
 package model;
 
+import java.beans.Expression;
+import java.math.MathContext;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Proyecto {
     //atributos
     private String empresa;
     private String actividad;
-    private ArrayList<Obra> obras = new ArrayList<Obra>();
+    private ArrayList<Obra> obras;
     private RecursoMaterial recursoMaterial;
     private RecursoHumano recursoHumano;
     
@@ -27,6 +30,7 @@ public class Proyecto {
     }
 
     public ArrayList<Obra> getObras() {
+        if (obras == null) { obras = new ArrayList<>();}
         return obras;
     }
 
@@ -52,4 +56,17 @@ public class Proyecto {
     
     
     //funciones
+    
+    public static int variable(int cx1,int cx2, int X, int limitante){
+        
+               int x = (cx1*0) + (8*X);
+        return x;
+    }
+    
+    public static int definirObjetivo(Enum restriccion,int X1, int X2){
+        if (restriccion.equals("")){
+            
+        }
+     return 1;
+    }
 }

@@ -1,7 +1,9 @@
 package view;
 
-import controller.*;
 
+import controller.ProcesamientoController;
+import controller.RecursosController;
+import controller.TrabajoController;
 import java.awt.Color;
 
 public class frmTrabajo extends javax.swing.JFrame {
@@ -84,19 +86,19 @@ public class frmTrabajo extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblRequerimiento);
 
-        txtObra.setToolTipText("Nombra a tu ");
+        txtObra.setToolTipText("Describe tu producto final");
 
-        txtMaterial.setToolTipText("Nombra a tu ");
+        txtMaterial.setToolTipText("Cantidad de material que requiere tu trabajo");
 
         lblMaterial.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblMaterial.setText("{texto} Requerido");
+        lblMaterial.setText("Material Requerido");
 
-        txtRHumano.setToolTipText("Nombra a tu ");
+        txtRHumano.setToolTipText("Cantidad de trabajo humano que requiere tu trabajo");
 
         lblRHumano.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblRHumano.setText("{texto} Requerido");
+        lblRHumano.setText("RRHH Requerido");
 
-        txtCostoObra.setToolTipText("Nombra a tu ");
+        txtCostoObra.setToolTipText("¿Cuánto costará tu trabajo?");
 
         lblCostoObra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblCostoObra.setText("Costo del Trabajo");
@@ -203,9 +205,9 @@ public class frmTrabajo extends javax.swing.JFrame {
                             .addComponent(lblMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtRHumano, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCostoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

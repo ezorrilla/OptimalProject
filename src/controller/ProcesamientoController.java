@@ -9,4 +9,5 @@ public class ProcesamientoController {
     public static void mostrar () { form.setLocationRelativeTo(null); form.setVisible(true);}
     public static void ocultar () { form.setVisible(false);} 
     public static Proyecto proyecto = new Proyecto();
+    
 }
