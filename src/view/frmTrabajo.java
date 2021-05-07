@@ -240,8 +240,16 @@ public class frmTrabajo extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         TrabajoController.btnAgregar();
+        limpiarIngreso();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void limpiarIngreso(){
+        txtObra.setText("");
+        txtMaterial.setText("");
+        txtRHumano.setText("");
+        txtCostoObra.setText("");
+    }
+        
 
     public javax.swing.JTable getTblRequerimiento() {
         return tblRequerimiento;
