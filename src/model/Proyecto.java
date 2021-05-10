@@ -58,25 +58,26 @@ public class Proyecto {
     
     //funciones
         
-    public Point[] tabularRecta(int cantidadRecurso){
-        Point[] recta = new Point[getObras().size()];
+    private static Point[] rectaRMaterial;
+    public Point[] tabularRectaRecursoMaterial(){
+        rectaRMaterial = new Point[getObras().size()];
         
         int x1; int x2;
         x1 = 0; //Para x1 = 0:
-        x2 = cantidadRecurso / getObras().get(1).getRequerimiento().getCantidadRMaterial();
+        x2 = getRecursoMaterial().getStock() / getObras().get(1).getRequerimiento().getCantidadRMaterial();
 
-        recta[0] =  new Point(x1, x2);
+        rectaRMaterial[0] =  new Point(x1, x2);
 
         x2 = 0; //Para x2 = 0;
-        x1 = cantidadRecurso / getObras().get(0).getRequerimiento().getCantidadRMaterial();
+        x1 = getRecursoMaterial().getStock() / getObras().get(0).getRequerimiento().getCantidadRMaterial();
 
-        recta[1] =  new Point(x1, x2); 
+        rectaRMaterial[1] =  new Point(x1, x2); 
         
-        return recta;
+        return rectaRMaterial;
     }
     
     private static Point[] rectaRHumano;
-    public void tabularRHumano(ArrayList<Obra> variablesObra, RecursoHumano rrhh){
+    public void tabularRectaRecursoHumano(ArrayList<Obra> variablesObra, RecursoHumano rrhh){
         rectaRHumano = new Point[variablesObra.size()];
         
         int x1; int x2;
@@ -118,10 +119,5 @@ public class Proyecto {
         return new Point(X,Y);
     }
     
-    public static int definirObjetivo(Enum restriccion,int X1, int X2){
-        if (restriccion.equals("")){
-            
-        }
-     return 1;
-    }
+    
 }
