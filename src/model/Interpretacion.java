@@ -9,6 +9,6 @@ package model;
  *
  * @author elder
  */
-public class Resultado {
+public class Interpretacion {
     
 }

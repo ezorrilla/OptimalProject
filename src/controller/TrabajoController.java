@@ -2,9 +2,7 @@
 package controller;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
-import model.Obra;
 import model.Proyecto;
-import model.Requerimiento;
 import view.frmTrabajo;
 
 public class TrabajoController {
@@ -13,13 +11,13 @@ public class TrabajoController {
     private static final Proyecto proyecto  = ProcesamientoController.proyecto;
     
     private static void formInit(){
-        form.getLblMaterial().setText("Cantidad de " + proyecto.getRecursoMaterial().getDescripcion().toUpperCase());
+        /*form.getLblMaterial().setText("Cantidad de " + proyecto.getRecursoMaterial().getDescripcion().toUpperCase());
         form.getLblRHumano().setText("Cantidad de " + proyecto.getRecursoHumano().getUnidad().toUpperCase());
         
         encabezados = new String[]{"TRABAJO",
                                     proyecto.getRecursoMaterial().getDescripcion().toUpperCase(),
                                     proyecto.getRecursoHumano().getUnidad().toUpperCase(),
-                                    "COSTO"};
+                                    "COSTO"};*/
     }
     
     public static void mostrar () { 
@@ -32,17 +30,17 @@ public class TrabajoController {
     public static void ocultar () { form.setVisible(false);}
     
     public static void btnAgregar(){
-        Requerimiento requerimiento = new Requerimiento(Integer.parseInt(form.getTxtMaterial().getText()), 
+        /*Requerimiento requerimiento = new Requerimiento(Integer.parseInt(form.getTxtMaterial().getText()), 
                                                         Integer.parseInt(form.getTxtRHumano().getText()));
         
         Obra obra = new Obra(form.getTxtObra().getText(), requerimiento, Float.parseFloat(form.getTxtCostoObra().getText()));
-        proyecto.getObras().add(obra);
+        proyecto.getObras().add(obra);*/
         
         listarObras();
     }
     
     private static void listarObras(){        
-        String[][] filas = new String[proyecto.getObras().size()][encabezados.length];
+        /*String[][] filas = new String[proyecto.getObras().size()][encabezados.length];
 
         for (int i = 0; i < proyecto.getObras().size(); i++) {
             Obra obra = proyecto.getObras().get(i);
@@ -57,6 +55,6 @@ public class TrabajoController {
         if (filas.length == 0){ filas = new String[][] {{"","","",""},{"","","",""},{"","","",""},{"","","",""}}; }       
         
         DefaultTableModel tbl = new DefaultTableModel(filas, encabezados);
-        form.getTblRequerimiento().setModel(tbl);   
+        form.getTblRequerimiento().setModel(tbl);   */
     }
 }

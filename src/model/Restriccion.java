@@ -1,6 +1,7 @@
 package model;
 
 public class Restriccion {
+    private String descripcion;
     private int coefX;
     private int coefY; 
     private int R;
@@ -9,6 +10,25 @@ public class Restriccion {
     private boolean diagonal;
     private boolean vertical;
     private boolean horizontal;
+    
+    public Restriccion(){}
+    
+    public Restriccion(String descripcion, int coefX, int coefY, int R, double ejeX, double ejeY, boolean diagonal, boolean vertical, boolean horizontal) {
+        this.descripcion = descripcion;
+        this.coefX = coefX;
+        this.coefY = coefY;
+        this.R = R;
+        this.ejeX = ejeX;
+        this.ejeY = ejeY;
+        this.diagonal = diagonal;
+        this.vertical = vertical;
+        this.horizontal = horizontal;
+    }
+
+    @Override
+    public String toString() {
+        return "Restriccion{" + "descripcion=" + descripcion + ", coefX=" + coefX + ", coefY=" + coefY + ", R=" + R + ", ejeX=" + ejeX + ", ejeY=" + ejeY + ", diagonal=" + diagonal + ", vertical=" + vertical + ", horizontal=" + horizontal + '}';
+    }
     
     public int getCoefX() {
         return coefX;
@@ -74,18 +94,27 @@ public class Restriccion {
         this.horizontal = horizontal;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    //Métodos
     public void tabularRecta(){        
         //Y*10 <=280
 	//X*20 + Y*14 <=800
         if(coefY != 0){
-            this.ejeY = R / coefY;
+            this.ejeY = (double) R / coefY;
             this.setVertical(false);
         }else{
             this.setVertical(true);
         }
                 
         if(coefX != 0){
-            this.ejeX = R / coefX;
+            this.ejeX = (double) R / coefX;
             this.setHorizontal(false);
         }else{
             this.setHorizontal(true);

@@ -8,6 +8,48 @@ public class Modelo {
     private ArrayList<Restriccion> restricciones;
     private ArrayList<Point2D.Double> vertices;
     
+    public Modelo(){
+        this.funcionObjetivo = new Objetivo();
+        this.restricciones = new ArrayList<Restriccion>();
+        this.vertices = new ArrayList<Point2D.Double>();
+    }
+    
+    public Modelo(Objetivo funcionObjetivo, ArrayList<Restriccion> restricciones, ArrayList<Point2D.Double> vertices) {
+        this.funcionObjetivo = funcionObjetivo;
+        this.restricciones = restricciones;
+        this.vertices = vertices;
+    }
+    
+    public Objetivo getFuncionObjetivo() {
+        return funcionObjetivo;
+    }
+
+    @Override
+    public String toString() {
+        return "Modelo{" + "restricciones=" + restricciones + ", vertices=" + vertices + '}';
+    }
+
+    public void setFuncionObjetivo(Objetivo funcionObjetivo) {
+        this.funcionObjetivo = funcionObjetivo;
+    }
+
+    public ArrayList<Restriccion> getRestricciones() {
+        return restricciones;
+    }
+
+    public void setRestricciones(ArrayList<Restriccion> restricciones) {
+        this.restricciones = restricciones;
+    }
+
+    public ArrayList<Point2D.Double> getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(ArrayList<Point2D.Double> vertices) {
+        this.vertices = vertices;
+    }
+    
+    //Métodos
     public void intersectarRectas(){
             
         for (Restriccion R1: restricciones) {
@@ -82,7 +124,7 @@ public class Modelo {
         int cX = cX1 + cX2;
         int R = limitR1 + limitR2;
 
-        X = R / cX;
+        X = (double)R / cX;
         
         
         cX1 = R1.getCoefX();
@@ -101,7 +143,7 @@ public class Modelo {
         int cY = cY1 + cY2;
         R = limitR1 + limitR2;
 
-        Y = R / cY;
+        Y = (double)R / cY;
         
         //restricción de No Negatividad
         if ( X > 0 && Y > 0){
@@ -119,10 +161,10 @@ public class Modelo {
         double X; double Y;
 
         //Sistema de ecuaciones: Reemplazo horizontal Y
-        X = ( limitR1 - (R1.getCoefY() * R2.getEjeY()) ) / R1.getCoefX();
+        X = (double)(  ( limitR1 - (R1.getCoefY() * R2.getEjeY()) ) / R1.getCoefX()  );
         
         //Remplazando X
-        Y = ( limitR1 - (R1.getCoefX() * X) ) / R1.getCoefY();
+        Y = (double)(  ( limitR1 - (R1.getCoefX() * X) ) / R1.getCoefY()  );
         
         //restricción de No Negatividad
         if ( X > 0 && Y > 0){
@@ -140,10 +182,10 @@ public class Modelo {
         double X; double Y;
 
         //Sistema de ecuaciones: Reemplazo vertical X
-        Y = ( limitR1 - (R1.getCoefX() * R2.getEjeX()) ) / R1.getCoefY();
+        Y = (double)(  ( limitR1 - (R1.getCoefX() * R2.getEjeX()) ) / R1.getCoefY()  );
         
         //Remplazando Y
-        X = ( limitR1 - (R1.getCoefY() * Y) ) / R1.getCoefX();
+        X = (double)(  ( limitR1 - (R1.getCoefY() * Y) ) / R1.getCoefX()  );
         
         //restricción de No Negatividad
         if ( X > 0 && Y > 0){
@@ -168,4 +210,5 @@ public class Modelo {
             return false;
         } 
     }
+
 }
