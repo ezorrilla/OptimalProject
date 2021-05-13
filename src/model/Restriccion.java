@@ -3,7 +3,8 @@ package model;
 public class Restriccion {
     private String descripcion;
     private int coefX;
-    private int coefY; 
+    private int coefY;
+    private String limite;
     private int R;
     private double ejeX;
     private double ejeY;
@@ -13,10 +14,11 @@ public class Restriccion {
     
     public Restriccion(){}
     
-    public Restriccion(String descripcion, int coefX, int coefY, int R, double ejeX, double ejeY, boolean diagonal, boolean vertical, boolean horizontal) {
+    public Restriccion(String descripcion, int coefX, int coefY, String limite, int R, double ejeX, double ejeY, boolean diagonal, boolean vertical, boolean horizontal) {
         this.descripcion = descripcion;
         this.coefX = coefX;
         this.coefY = coefY;
+        this.limite = limite;
         this.R = R;
         this.ejeX = ejeX;
         this.ejeY = ejeY;
@@ -28,6 +30,14 @@ public class Restriccion {
     @Override
     public String toString() {
         return "Restriccion{" + "descripcion=" + descripcion + ", coefX=" + coefX + ", coefY=" + coefY + ", R=" + R + ", ejeX=" + ejeX + ", ejeY=" + ejeY + ", diagonal=" + diagonal + ", vertical=" + vertical + ", horizontal=" + horizontal + '}';
+    }
+
+    public String getLimite() {
+        return limite;
+    }
+
+    public void setLimite(String limite) {
+        this.limite = limite;
     }
     
     public int getCoefX() {

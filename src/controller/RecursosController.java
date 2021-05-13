@@ -20,12 +20,12 @@ public class RecursosController {
         ProcesamientoController.proyecto.setRecursoMaterial(rmaterial);*/
         proyecto.getRestricciones().clear();
         Restriccion restriccion1 = new Restriccion();
-        restriccion1.setR(Integer.parseInt(form.getTxtStockMaterial().getText()));
+        restriccion1.setR(Integer.parseInt(form.getTxtStockMaterial().getValue().toString()));
         restriccion1.setDescripcion("Material " + form.getTxtDescripcionMaterial().getText());
         proyecto.getRestricciones().add(restriccion1);        
         
         Restriccion restriccion2 = new Restriccion();
-        restriccion2.setR(Integer.parseInt(form.getTxtDisponibilidadRRHH().getText()));
+        restriccion2.setR(Integer.parseInt(form.getTxtDisponibilidadRRHH().getValue().toString()));
         restriccion2.setDescripcion("RRHH en " + form.getCboUnidadRRHH().getSelectedItem().toString());       
         proyecto.getRestricciones().add(restriccion2);
     }

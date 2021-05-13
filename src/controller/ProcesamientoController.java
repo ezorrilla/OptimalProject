@@ -50,20 +50,21 @@ public class ProcesamientoController {
     }
     
     public static void maximizar(){
-        int indexObjetivo = form.getLstObjetivos().getSelectedIndex();
-        if (indexObjetivo >= 0){
+        int coefX = Integer.parseInt(form.getSpnCoefXObjetivo().getValue().toString());
+        int coefY = Integer.parseInt(form.getSpnCoefYObjetivo().getValue().toString());
+        if (coefX > 0 && coefY > 0){
             proyecto.intersectarRectas();            
             graficar();           
 
-            proyecto.getFuncionObjetivo().setCoefX(proyecto.getRestricciones().get(indexObjetivo).getCoefX());
-            proyecto.getFuncionObjetivo().setCoefY(proyecto.getRestricciones().get(indexObjetivo).getCoefY());
+            proyecto.getFuncionObjetivo().setCoefX( coefX );
+            proyecto.getFuncionObjetivo().setCoefY( coefY );
 
             proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), proyecto.getFuncionObjetivo().Max);
             
             form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().toString());
             System.out.println(proyecto.getRestricciones().toString());
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un item para establecer su objetivo.", "Validación", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ingrese coeficientes del objetivo mayores a cero.", "Validación", JOptionPane.WARNING_MESSAGE);
         }
         
     }

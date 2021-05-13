@@ -4,6 +4,7 @@ import controller.*;
 
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 public class frmRecursos extends javax.swing.JFrame {
@@ -25,13 +26,13 @@ public class frmRecursos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtDisponibilidadRRHH = new javax.swing.JTextField();
         cboUnidadRRHH = new javax.swing.JComboBox<>();
-        txtStockMaterial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
         lblImagenEmpresa = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
+        txtStockMaterial = new javax.swing.JSpinner();
+        txtDisponibilidadRRHH = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,22 +56,8 @@ public class frmRecursos extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Digita la cantidad de recurso humano que dispones");
 
-        txtDisponibilidadRRHH.setToolTipText("Recurso humano que dispones");
-        txtDisponibilidadRRHH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDisponibilidadRRHHKeyTyped(evt);
-            }
-        });
-
         cboUnidadRRHH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minutos", "Horas", "Días", "Semanas", "Meses", "Personas" }));
         cboUnidadRRHH.setToolTipText("Tipo de unidad de tu recurso humano");
-
-        txtStockMaterial.setToolTipText("Recurso material que dispones");
-        txtStockMaterial.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtStockMaterialKeyTyped(evt);
-            }
-        });
 
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Nombre material. Por ejemplo: madera, pintura, tela, etc.");
@@ -118,27 +105,21 @@ public class frmRecursos extends javax.swing.JFrame {
                 .addComponent(lblImagenEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtStockMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(txtDescripcionMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtStockMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(txtDescripcionMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtDisponibilidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
-                                .addComponent(cboUnidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap()))
+                                .addComponent(cboUnidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addContainerGap())
@@ -168,19 +149,19 @@ public class frmRecursos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDescripcionMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStockMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtStockMaterial)
+                            .addComponent(txtDescripcionMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisponibilidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboUnidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboUnidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDisponibilidadRRHH, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
@@ -207,14 +188,6 @@ public class frmRecursos extends javax.swing.JFrame {
         AsignacionRecursosController.mostrar();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    private void txtStockMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockMaterialKeyTyped
-        validarSoloNumeros(evt);
-    }//GEN-LAST:event_txtStockMaterialKeyTyped
-
-    private void txtDisponibilidadRRHHKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisponibilidadRRHHKeyTyped
-        validarSoloNumeros(evt);
-    }//GEN-LAST:event_txtDisponibilidadRRHHKeyTyped
-
     private void validarSoloNumeros(java.awt.event.KeyEvent evt){
         char caracter = evt.getKeyChar();
         // Verificar si la tecla pulsada no es un digito
@@ -234,11 +207,11 @@ public class frmRecursos extends javax.swing.JFrame {
         return txtDescripcionMaterial;
     }
 
-    public JTextField getTxtDisponibilidadRRHH() {
+    public JSpinner getTxtDisponibilidadRRHH() {
         return txtDisponibilidadRRHH;
     }
 
-    public JTextField getTxtStockMaterial() {
+    public JSpinner getTxtStockMaterial() {
         return txtStockMaterial;
     }
 
@@ -255,7 +228,7 @@ public class frmRecursos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblImagenEmpresa;
     private javax.swing.JTextField txtDescripcionMaterial;
-    private javax.swing.JTextField txtDisponibilidadRRHH;
-    private javax.swing.JTextField txtStockMaterial;
+    private javax.swing.JSpinner txtDisponibilidadRRHH;
+    private javax.swing.JSpinner txtStockMaterial;
     // End of variables declaration//GEN-END:variables
 }

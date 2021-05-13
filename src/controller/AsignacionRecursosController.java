@@ -19,12 +19,14 @@ public class AsignacionRecursosController {
         
         Restriccion restriccionMaterial = proyecto.getRestricciones().get(0);
         restriccionMaterial.setCoefX(Integer.parseInt(form.getSpnMaterialV1().getValue().toString()));
+        restriccionMaterial.setLimite("<=");
         restriccionMaterial.setCoefY(Integer.parseInt(form.getSpnMaterialV2().getValue().toString()));
         restriccionMaterial.tabularRecta();
         
         Restriccion restriccionRRHH = proyecto.getRestricciones().get(1);
         restriccionRRHH.setCoefX(Integer.parseInt(form.getSpnRRHHV1().getValue().toString()));
         restriccionRRHH.setCoefY(Integer.parseInt(form.getSpnRRHHV2().getValue().toString()));
+        restriccionRRHH.setLimite("<=");
         restriccionRRHH.tabularRecta();
     }
 }
