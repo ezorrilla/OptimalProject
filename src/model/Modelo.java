@@ -51,11 +51,11 @@ public class Modelo {
     
     //Métodos
     public void intersectarRectas(){
-            
+        verticesEjes();
+        
         for (Restriccion R1: restricciones) {
             
             for (Restriccion R2 : restricciones) {
-            //R1.tabularRecta();        
                 
                 if(R1 != R2){
                     if( R1.isDiagonal() ){
@@ -98,6 +98,19 @@ public class Modelo {
             }            
             
         }    
+    }
+    
+    private void verticesEjes(){
+        this.vertices.add(new Point2D.Double(0,0));
+        
+        for (int i = 0; i < restricciones.size(); i++) {
+            Restriccion get = restricciones.get(i);
+            if(get.isVertical() || get.isDiagonal()){
+                this.vertices.add(new Point2D.Double(get.getEjeX(), 0));            
+            }else if(get.isHorizontal() || get.isDiagonal()){            
+                this.vertices.add(new Point2D.Double(0, get.getEjeY()));
+            } 
+        }
     }
     
     private boolean existeVector(int[][] lista, int[] par){
@@ -146,7 +159,7 @@ public class Modelo {
         Y = (double)R / cY;
         
         //restricción de No Negatividad
-        if ( X > 0 && Y > 0){
+        if ( X >= 0 && Y >= 0){
             this.vertices.add(new Point2D.Double(X,Y));
             return true;
         }else{
@@ -167,7 +180,7 @@ public class Modelo {
         Y = (double)(  ( limitR1 - (R1.getCoefX() * X) ) / R1.getCoefY()  );
         
         //restricción de No Negatividad
-        if ( X > 0 && Y > 0){
+        if ( X >= 0 && Y >= 0){
             this.vertices.add(new Point2D.Double(X,Y));
             return true;
         }else{
@@ -188,7 +201,7 @@ public class Modelo {
         X = (double)(  ( limitR1 - (R1.getCoefY() * Y) ) / R1.getCoefX()  );
         
         //restricción de No Negatividad
-        if ( X > 0 && Y > 0){
+        if ( X >= 0 && Y >= 0){
             this.vertices.add(new Point2D.Double(X,Y));
             return true;
         }else{
@@ -203,7 +216,7 @@ public class Modelo {
         X = R2Vertical.getEjeX();
         
         //restricción de No Negatividad
-        if ( X > 0 && Y > 0){
+        if ( X >= 0 && Y >= 0){
             this.vertices.add(new Point2D.Double(X,Y));
             return true;
         }else{
@@ -211,4 +224,11 @@ public class Modelo {
         } 
     }
 
+    private void verticesRegionFactible(){
+        
+        
+    
+    }
+    
+    
 }
