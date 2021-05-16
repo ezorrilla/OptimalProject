@@ -1,17 +1,20 @@
 package model;
 
+import java.util.List;
+import java.util.Comparator;
+import java.util.Collections;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class Modelo {
     private Objetivo funcionObjetivo;
     private ArrayList<Restriccion> restricciones;
-    private ArrayList<Point2D.Double> vertices;
+    private List<Point2D.Double> vertices;
     
     public Modelo(){
         this.funcionObjetivo = new Objetivo();
         this.restricciones = new ArrayList<Restriccion>();
-        this.vertices = new ArrayList<Point2D.Double>();
+        this.vertices = new ArrayList<>();
     }
     
     public Modelo(Objetivo funcionObjetivo, ArrayList<Restriccion> restricciones, ArrayList<Point2D.Double> vertices) {
@@ -41,7 +44,7 @@ public class Modelo {
         this.restricciones = restricciones;
     }
 
-    public ArrayList<Point2D.Double> getVertices() {
+    public List<Point2D.Double> getVertices() {
         return vertices;
     }
 
@@ -109,6 +112,12 @@ public class Modelo {
                     this.vertices.add(new Point2D.Double(0, r.getEjeY()));
             
         });
+    }
+    
+    public void dibujarRegionFactible(){
+        //Mayor de Y y Menor de X
+        Point2D.Double maxValue = vertices.stream().max(Comparator.comparing(v -> v.y)).get();
+        
     }
     
     

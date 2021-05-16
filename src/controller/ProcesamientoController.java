@@ -3,6 +3,7 @@ package controller;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Proyecto;
+import model.Restriccion;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
@@ -20,6 +22,7 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.TextAnchor;
 import view.frmProcesamiento;
 
 public class ProcesamientoController {
@@ -36,17 +39,42 @@ public class ProcesamientoController {
     }
     public static void ocultar () { form.setVisible(false);} 
     
+    public static void dataPrueba(){
+        /*proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        proyecto.getFuncionObjetivo().setVariableY("camisas");
+        Restriccion r1 = new Restriccion();
+        r1.setDescripcion("res1"); r1.setCoefX(1); r1.setCoefY(0); r1.setLimite("<="); r1.setR(4); r1.tabularRecta();
+        Restriccion r2 = new Restriccion();
+        r2.setDescripcion("res2"); r2.setCoefX(0); r2.setCoefY(2); r2.setLimite("<="); r2.setR(12); r2.tabularRecta();
+        Restriccion r3 = new Restriccion();
+        r3.setDescripcion("res3"); r3.setCoefX(3); r3.setCoefY(2); r3.setLimite("<="); r3.setR(18); r3.tabularRecta();
+        proyecto.getRestricciones().add(r1);
+        proyecto.getRestricciones().add(r2);
+        proyecto.getRestricciones().add(r3);*/
+        
+        
+        proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        proyecto.getFuncionObjetivo().setVariableY("camisas");
+        Restriccion r2 = new Restriccion();
+        r2.setDescripcion("res2"); r2.setCoefX(4); r2.setCoefY(8); r2.setLimite("<="); r2.setR(480); r2.tabularRecta();
+        Restriccion r3 = new Restriccion();
+        r3.setDescripcion("res3"); r3.setCoefX(12); r3.setCoefY(8); r3.setLimite("<="); r3.setR(540); r3.tabularRecta();
+        proyecto.getRestricciones().add(r2);
+        proyecto.getRestricciones().add(r3);
+    }
     
     private static void formInit(){
-        
+        form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX());        
+        form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY());
+        //dataPrueba();
         proyecto.getRestricciones().forEach(restriccion -> {
             
             mayorX = restriccion.getEjeX() > mayorX ? restriccion.getEjeX() : mayorX;
             mayorY = restriccion.getEjeX() > mayorY ? restriccion.getEjeX() : mayorY;
         });
         
-        form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX());        
-        form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY());
+        proyecto.intersectarRectas();
+        graficar();
     }
     
     public static void maximizar(){
@@ -63,12 +91,10 @@ public class ProcesamientoController {
         
         if (coefX > 0 && coefY > 0){
             
-            proyecto.intersectarRectas();
             proyecto.getFuncionObjetivo().setCoefX( coefX );
             proyecto.getFuncionObjetivo().setCoefY( coefY );
             proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), objetivo);
             
-            graficar();
             
             form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().toString());
             System.out.println(proyecto.getRestricciones().toString());
@@ -102,7 +128,11 @@ public class ProcesamientoController {
         
         for (Point2D.Double v : proyecto.getVertices()) {
             XYPlot plot = chart.getXYPlot();
-            XYTextAnnotation textAnnotaion = new XYTextAnnotation("("+v.x+","+v.y+")", v.x, v.y);
+            XYTextAnnotation textAnnotaion = new XYTextAnnotation("("+v.x+", "+v.y+")", v.x+ (mayorX*0.05), v.y + (mayorY*0.03));
+            //textAnnotaion.setRotationAngle(-70.0);
+            textAnnotaion.setFont(new Font("Tahoma", Font.BOLD, 11));
+            textAnnotaion.setPaint(new Color(244, 246, 247));
+            //textAnnotaion.setTextAnchor(TextAnchor.BOTTOM_LEFT);
             plot.addAnnotation(textAnnotaion);
             
         }

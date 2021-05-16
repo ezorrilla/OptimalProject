@@ -2,7 +2,7 @@
 package model;
 
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Objetivo {
     private double Z;
@@ -89,23 +89,25 @@ public class Objetivo {
     }
     
     //Métodos    
-    public void calcularObjetivo(ArrayList<Point2D.Double> verticesRegion, String tipoOptimizacion){
+    public void calcularObjetivo(List<Point2D.Double> verticesRegion, String tipoOptimizacion){
         double valZ = 0;
         
         for (Point2D.Double v : verticesRegion) {
             double z = coefX * v.x + coefY * v.y;
             
             if (tipoOptimizacion.equalsIgnoreCase(Max)){
-                if(z > valZ){
+                if(z >= valZ){
                     X = v.x;
                     Y = v.y;
                     valZ = z;
                 }
                 
             }else if(tipoOptimizacion.equalsIgnoreCase(Min)){
-                X = v.x;
-                Y = v.y;
-                valZ = z < valZ ? z : valZ;
+                if(z <= valZ){
+                    X = v.x;
+                    Y = v.y;
+                    valZ = z ;                
+                }
             }          
         }
         Z = valZ;
