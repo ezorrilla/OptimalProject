@@ -3,10 +3,10 @@ package controller;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Proyecto;
@@ -14,6 +14,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.annotations.XYTextAnnotation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
@@ -38,35 +39,42 @@ public class ProcesamientoController {
     
     private static void formInit(){
         
-        DefaultListModel listModel = new DefaultListModel();
-        
         proyecto.getRestricciones().forEach(restriccion -> {
-            listModel.addElement(restriccion.getDescripcion());
             
             mayorX = restriccion.getEjeX() > mayorX ? restriccion.getEjeX() : mayorX;
             mayorY = restriccion.getEjeX() > mayorY ? restriccion.getEjeX() : mayorY;
         });
-        form.getLstObjetivos().setModel(listModel);
+        
+        form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX());        
+        form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY());
     }
     
     public static void maximizar(){
+        optimizarProyecto(proyecto.getFuncionObjetivo().Max);        
+    }
+    
+    public static void minimizar(){
+        optimizarProyecto(proyecto.getFuncionObjetivo().Min);
+    }
+    
+    private static void optimizarProyecto(String objetivo){
         int coefX = Integer.parseInt(form.getSpnCoefXObjetivo().getValue().toString());
         int coefY = Integer.parseInt(form.getSpnCoefYObjetivo().getValue().toString());
+        
         if (coefX > 0 && coefY > 0){
-            proyecto.intersectarRectas();            
-            graficar();           
-
+            
+            proyecto.intersectarRectas();
             proyecto.getFuncionObjetivo().setCoefX( coefX );
             proyecto.getFuncionObjetivo().setCoefY( coefY );
-
-            proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), proyecto.getFuncionObjetivo().Max);
+            proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), objetivo);
+            
+            graficar();
             
             form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().toString());
             System.out.println(proyecto.getRestricciones().toString());
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese coeficientes del objetivo mayores a cero.", "Validación", JOptionPane.WARNING_MESSAGE);
-        }
-        
+        } 
     }
     
     public static void graficar(){
@@ -90,8 +98,14 @@ public class ProcesamientoController {
         JFreeChart chart = ChartFactory.createXYLineChart(chartTitle, 
                 xAxisLabel, yAxisLabel, dataset);
 
-        customizeChart(chart);
-
+        customizeChart(chart);        
+        
+        for (Point2D.Double v : proyecto.getVertices()) {
+            XYPlot plot = chart.getXYPlot();
+            XYTextAnnotation textAnnotaion = new XYTextAnnotation("("+v.x+","+v.y+")", v.x, v.y);
+            plot.addAnnotation(textAnnotaion);
+            
+        }
         // saves the chart as an image files
         /*File imageFile = new File("XYLineChart.png");
         int width = 640;

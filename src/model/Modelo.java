@@ -53,72 +53,83 @@ public class Modelo {
     public void intersectarRectas(){
         verticesEjes();
         
-        for (Restriccion R1: restricciones) {
+        for (int i = 0; i < restricciones.size(); i++) {
+            Restriccion R1 = restricciones.get(i);
             
-            for (Restriccion R2 : restricciones) {
+            for (int j = i+1; j < restricciones.size(); j++) {
+                Restriccion R2 = restricciones.get(j);
                 
-                if(R1 != R2){
-                    if( R1.isDiagonal() ){
-                        if(R2.isDiagonal()){
-                            this.verticeDiagonales(R1, R2);
-                        }
-                        
-                        if (R2.isHorizontal()) {
-                            this.verticeDiagonalHorizontal(R1, R2);                            
-                        }
-                        
-                        if (R2.isVertical()) {
-                            this.verticeDiagonalVertical(R1, R2);                               
-                        }
-                        
-                    }
-                                    
-                    if( R1.isHorizontal() ){
-                        if(R2.isDiagonal()){
-                            this.verticeDiagonalHorizontal(R2, R1);
-                        }
-                                                
-                        if (R2.isVertical()) {
-                            this.verticePerpendicular(R1, R2);                               
-                        }
-                    }                    
-                    
-                    if( R1.isVertical() ){
-                        if(R2.isDiagonal()){
-                            this.verticeDiagonalVertical(R2, R1);
-                        }
-                                                
-                        if (R2.isHorizontal()) {
-                            this.verticePerpendicular(R2, R1);                               
-                        }
-                    }
-                    
+                if( R1.isDiagonal() ){
+
+                    if(R2.isDiagonal()){                            
+                        this.verticeDiagonales(R1, R2);                            
+
+                    }else if (R2.isHorizontal()) {
+                        this.verticeDiagonalHorizontal(R1, R2);
+
+                    }else if (R2.isVertical()) {
+                        this.verticeDiagonalVertical(R1, R2);                               
+                    }                        
                 }
-                
-            }            
-            
-        }    
+
+                if( R1.isHorizontal() ){
+
+                    if(R2.isDiagonal()){
+                        this.verticeDiagonalHorizontal(R2, R1);
+
+                    }else if (R2.isVertical()) {
+                        this.verticePerpendicular(R1, R2);                               
+                    }
+                }
+
+                if( R1.isVertical() ){
+                    if(R2.isDiagonal()){
+                        this.verticeDiagonalVertical(R2, R1);
+
+                    }else if (R2.isHorizontal()) {
+                        this.verticePerpendicular(R2, R1);                               
+                    }
+                }
+            }
+        }
+        System.out.println("vertices final="+vertices);
     }
     
     private void verticesEjes(){
+        this.vertices.clear();
         this.vertices.add(new Point2D.Double(0,0));
         
-        for (int i = 0; i < restricciones.size(); i++) {
-            Restriccion get = restricciones.get(i);
-            if(get.isVertical() || get.isDiagonal()){
-                this.vertices.add(new Point2D.Double(get.getEjeX(), 0));            
-            }else if(get.isHorizontal() || get.isDiagonal()){            
-                this.vertices.add(new Point2D.Double(0, get.getEjeY()));
-            } 
-        }
+        restricciones.forEach(r -> {
+            if(r.isVertical() || r.isDiagonal())
+                if(enRegionFactible(r.getEjeX(), 0))
+                    this.vertices.add(new Point2D.Double(r.getEjeX(), 0));            
+            
+            if(r.isHorizontal() || r.isDiagonal())
+                if(enRegionFactible(0, r.getEjeY()))
+                    this.vertices.add(new Point2D.Double(0, r.getEjeY()));
+            
+        });
     }
     
-    private boolean existeVector(int[][] lista, int[] par){
+    
+    private boolean enRegionFactible(double x, double y){
+        if (!( x >= 0 && y >= 0 )) return false;
+        
+        for (Restriccion r : restricciones) {
+            switch (r.getLimite()){
+                case "<=" -> {
+                    if(!( r.getCoefX() * x + r.getCoefY() * y <= r.getR() )) return false;
+                }
+                case ">=" -> { 
+                    if(!( r.getCoefX() * x + r.getCoefY() * y <= r.getR() )) return false;
+                }
+            }
+        }
         
         return true;
     }
     
-    private boolean verticeDiagonales(Restriccion R1, Restriccion R2){
+    private void verticeDiagonales(Restriccion R1, Restriccion R2){
     
         int cX1 = R1.getCoefX();
         int cY1 = R1.getCoefY();
@@ -127,7 +138,7 @@ public class Modelo {
         int limitR1 = R1.getR();
         int limitR2 = R2.getR();
 
-        //Sistema de ecuaciones: Metodo de Reduccion
+        //Sistema de ecuaciones: Método de Reducción
         double X; double Y;
         int mtY1 = cY1; int mtY2 = cY2;
         
@@ -158,38 +169,31 @@ public class Modelo {
 
         Y = (double)R / cY;
         
-        //restricción de No Negatividad
-        if ( X >= 0 && Y >= 0){
+        //Validar si forma parte de la región factible
+        if (enRegionFactible(X,Y))
             this.vertices.add(new Point2D.Double(X,Y));
-            return true;
-        }else{
-            return false;
-        }        
+           
     }
     
     
-    private boolean verticeDiagonalHorizontal(Restriccion R1, Restriccion R2){    
+    private void verticeDiagonalHorizontal(Restriccion R1, Restriccion R2){    
         int limitR1 = R1.getR();
 
         double X; double Y;
 
-        //Sistema de ecuaciones: Reemplazo horizontal Y
+        //Sistema de ecuaciones: Reemplazando Y de horizontal en la Diagonal
         X = (double)(  ( limitR1 - (R1.getCoefY() * R2.getEjeY()) ) / R1.getCoefX()  );
         
         //Remplazando X
         Y = (double)(  ( limitR1 - (R1.getCoefX() * X) ) / R1.getCoefY()  );
-        
-        //restricción de No Negatividad
-        if ( X >= 0 && Y >= 0){
+                
+        //Validar si forma parte de la región factible
+        if (enRegionFactible(X,Y))
             this.vertices.add(new Point2D.Double(X,Y));
-            return true;
-        }else{
-            return false;
-        } 
     }
     
     
-    private boolean verticeDiagonalVertical(Restriccion R1, Restriccion R2){    
+    private void verticeDiagonalVertical(Restriccion R1, Restriccion R2){    
         int limitR1 = R1.getR();
 
         double X; double Y;
@@ -200,35 +204,20 @@ public class Modelo {
         //Remplazando Y
         X = (double)(  ( limitR1 - (R1.getCoefY() * Y) ) / R1.getCoefX()  );
         
-        //restricción de No Negatividad
-        if ( X >= 0 && Y >= 0){
+        //Validar si forma parte de la región factible
+        if (enRegionFactible(X,Y))
             this.vertices.add(new Point2D.Double(X,Y));
-            return true;
-        }else{
-            return false;
-        } 
     }
     
-    private boolean verticePerpendicular(Restriccion R1Horizontal, Restriccion R2Vertical){
+    private void verticePerpendicular(Restriccion R1Horizontal, Restriccion R2Vertical){
         double X; double Y;
 
         Y = R1Horizontal.getEjeY();        
         X = R2Vertical.getEjeX();
         
-        //restricción de No Negatividad
-        if ( X >= 0 && Y >= 0){
+        //Validar si forma parte de la región factible
+        if (enRegionFactible(X,Y))
             this.vertices.add(new Point2D.Double(X,Y));
-            return true;
-        }else{
-            return false;
-        } 
     }
-
-    private void verticesRegionFactible(){
-        
-        
-    
-    }
-    
-    
+  
 }
