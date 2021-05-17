@@ -5,6 +5,6 @@ public class Principal {
     
     public static void main (String[] args){   
         
-        ProcesamientoController.mostrar();
+        PanelInicioController.mostrar();
     }
 }

@@ -1,6 +1,5 @@
 
 package controller;
-import static controller.RecursosController.form;
 import model.Proyecto;
 import model.Restriccion;
 import view.frmAsignacionRecursos;
@@ -9,10 +8,17 @@ import view.frmAsignacionRecursos;
 public class AsignacionRecursosController {
     
     public static frmAsignacionRecursos form = new frmAsignacionRecursos();
-    
-    public static void mostrar () { form.setLocationRelativeTo(null); form.setVisible(true);}
-    public static void ocultar () { form.setVisible(false);}     
     private static final Proyecto proyecto = ProcesamientoController.proyecto;
+    
+    public static void mostrar () { 
+        form.setLocationRelativeTo(null); form.setVisible(true);
+        form.getLblVariable1X().setText(proyecto.getFuncionObjetivo().getVariableX().toUpperCase());
+        form.getLblVariable1Y().setText(proyecto.getFuncionObjetivo().getVariableY().toUpperCase());
+        form.getLblVariable2X().setText(proyecto.getFuncionObjetivo().getVariableX().toUpperCase());
+        form.getLblVariable2Y().setText(proyecto.getFuncionObjetivo().getVariableY().toUpperCase());
+    }
+    public static void reiniciado () { form = new frmAsignacionRecursos(); }
+    public static void ocultar () { form.setVisible(false);}     
     
     
     public static void btnSiguiente(){

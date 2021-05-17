@@ -10,6 +10,7 @@ public class RecursosController {
     
     public static void mostrar () { form.setLocationRelativeTo(null); form.setVisible(true);}
     public static void ocultar () { form.setVisible(false);}     
+    public static void reiniciado () { form = new frmRecursos(); }
     private static final Proyecto proyecto = ProcesamientoController.proyecto;
     
     public static void btnSiguiente(){

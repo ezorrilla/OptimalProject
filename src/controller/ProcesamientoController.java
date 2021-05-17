@@ -34,16 +34,20 @@ public class ProcesamientoController {
     public static Proyecto proyecto = new Proyecto();
     private static double mayorX;
     private static double mayorY;
+    private static JFreeChart chart;
     
     public static void mostrar () { 
         formInit();
         form.setLocationRelativeTo(null); 
         form.setVisible(true);
     }
+    
+    public static void reiniciado () { proyecto = new Proyecto(); form = new frmProcesamiento(); }
+    
     public static void ocultar () { form.setVisible(false);} 
     
     public static void dataPrueba(){
-        proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        /*proyecto.getFuncionObjetivo().setVariableX("pantalones");
         proyecto.getFuncionObjetivo().setVariableY("camisas");
         Restriccion r1 = new Restriccion();
         r1.setDescripcion("res1"); r1.setCoefX(1); r1.setCoefY(0); r1.setLimite("<="); r1.setR(4); r1.tabularRecta();
@@ -55,8 +59,9 @@ public class ProcesamientoController {
         proyecto.getRestricciones().add(r2);
         proyecto.getRestricciones().add(r3);
         
-        
-        /*proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        proyecto.setEmpresa("Textil Camones");
+        proyecto.setActividad("confeccionar");
+        proyecto.getFuncionObjetivo().setVariableX("pantalones");
         proyecto.getFuncionObjetivo().setVariableY("camisas");
         Restriccion r2 = new Restriccion();
         r2.setDescripcion("res2"); r2.setCoefX(4); r2.setCoefY(8); r2.setLimite("<="); r2.setR(480); r2.tabularRecta();
@@ -67,9 +72,8 @@ public class ProcesamientoController {
     }
     
     private static void formInit(){
-        dataPrueba();
-        form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX());        
-        form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY());
+        form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX().toUpperCase());        
+        form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY().toUpperCase());
         proyecto.getRestricciones().forEach(restriccion -> {
             
             mayorX = restriccion.getEjeX() > mayorX ? restriccion.getEjeX() : mayorX;
@@ -106,21 +110,35 @@ public class ProcesamientoController {
         proyecto.getFuncionObjetivo().setCoefX( coefX );
         proyecto.getFuncionObjetivo().setCoefY( coefY );
         proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), objetivo);
+        graficarPuntoOptimo();
 
-
-        form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().getInterpretacion());
+        form.getLblSugerencia().setText(proyecto.getInterpretacionObjetivo());
+        form.getLblRestricciones().setText(proyecto.getInterpretacionRestricciones());
         System.out.println(proyecto.getRestricciones().toString());
         
     }
     
     public static void graficar(){
-        // Create dataset  
-        
+        // Create dataset          
         JPanel chartPanel = createChartPanel();       
         form.add(chartPanel, BorderLayout.CENTER);
         
         form.getPnlGrafico().setLayout(new java.awt.BorderLayout());
         form.getPnlGrafico().add(chartPanel);
+        form.getPnlGrafico().validate();
+    }
+    
+    private static void graficarPuntoOptimo(){
+        XYPlot plot = chart.getXYPlot();
+        JPanel chartPanel = new ChartPanel(chart);
+        form.add(chartPanel, BorderLayout.CENTER);
+        XYTextAnnotation textAnnotaion = new XYTextAnnotation("● Z Óptimo", proyecto.getFuncionObjetivo().getX() , proyecto.getFuncionObjetivo().getY());
+            textAnnotaion.setFont(new Font("Tahoma", Font.BOLD, 20));
+            textAnnotaion.setPaint(Color.RED);
+            textAnnotaion.setTextAnchor(TextAnchor.CENTER_LEFT);
+            plot.addAnnotation(textAnnotaion);
+        
+        form.setPnlGrafico(chartPanel);
         form.getPnlGrafico().validate();
     }
     
@@ -131,14 +149,14 @@ public class ProcesamientoController {
 
         XYDataset dataset = createDataset();
 
-        JFreeChart chart = ChartFactory.createXYLineChart(chartTitle, 
+        chart = ChartFactory.createXYLineChart(chartTitle, 
                 xAxisLabel, yAxisLabel, dataset);
 
         customizeChart(chart);        
         
         for (Point2D.Double v : proyecto.getVertices()) {
             XYPlot plot = chart.getXYPlot();
-            XYTextAnnotation textAnnotaion = new XYTextAnnotation("("+v.x+", "+v.y+")", v.x+ (mayorX*0.05), v.y + (mayorY*0.03));
+            XYTextAnnotation textAnnotaion = new XYTextAnnotation("("+v.x+", "+v.y+")", v.x+ (mayorX*0.07), v.y + (mayorY*0.04));
             //textAnnotaion.setRotationAngle(-70.0);
             textAnnotaion.setFont(new Font("Tahoma", Font.BOLD, 11));
             textAnnotaion.setPaint(new Color(244, 246, 247));

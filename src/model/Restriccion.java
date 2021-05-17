@@ -133,6 +133,4 @@ public class Restriccion {
         if(this.coefX != 0 && this.coefY != 0){ this.setDiagonal(true); }
     }
 
-
-
 }

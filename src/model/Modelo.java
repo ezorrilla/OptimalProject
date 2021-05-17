@@ -3,7 +3,6 @@ package model;
 import java.awt.geom.Line2D;
 import java.util.List;
 import java.util.Comparator;
-import java.util.Collections;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
@@ -124,8 +123,7 @@ public class Modelo {
         Point2D.Double maxValue = vertices.stream().max(Comparator.comparing(v -> v.y)).get();
         
     }
-    
-    
+        
     private boolean enRegionFactible(double x, double y){
         if (!( x >= 0 && y >= 0 )) return false;
         

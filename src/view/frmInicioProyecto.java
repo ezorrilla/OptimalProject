@@ -46,7 +46,7 @@ public class frmInicioProyecto extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("¿Cómo se llama tu empresa?");
 
-        txtEmpresa.setToolTipText("Nombra a tu ");
+        txtEmpresa.setToolTipText("Nombra a tu Empresa");
 
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Menciona a la empresa que será beneficiada");
@@ -61,7 +61,7 @@ public class frmInicioProyecto extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Escribe una actividad. Por ejemplo: Pintar, Cortar, Cultivar, etc.");
 
-        txtActividad.setToolTipText("Nombra a tu ");
+        txtActividad.setToolTipText("Nombra la actividad general de tu proyecto ");
 
         btnSiguiente.setBackground(new java.awt.Color(0, 0, 255));
         btnSiguiente.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -78,9 +78,9 @@ public class frmInicioProyecto extends javax.swing.JFrame {
             }
         });
 
-        txtVariableX.setToolTipText("Nombra a tu ");
+        txtVariableX.setToolTipText("Nombra a tu primera variable");
 
-        txtVariableY.setToolTipText("Nombra a tu ");
+        txtVariableY.setToolTipText("Nombra a tu segunda varible");
 
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Primera Variable");

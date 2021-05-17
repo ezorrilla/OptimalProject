@@ -16,7 +16,6 @@ public class Objetivo {
     private double Y;
     private String variableX;
     private String variableY;
-    private String interpretacion;
     
     public Objetivo(){}
     
@@ -93,17 +92,11 @@ public class Objetivo {
     public void setVariableY(String variableY) {
         this.variableY = variableY;
     }
+
+    public String getOptimizacion() {
+        return optimizacion;
+    }
     
-    private void setInterpretacion() {
-        var optimizar  = this.optimizacion.equalsIgnoreCase(Max) ? "máximo" : "mínimo";
-        this.interpretacion = String.format( "Deben producirse %s %s y %s %s para obtener un valor %s de %s de %s.", 
-                                            this.X, this.variableX, this.Y, this.variableY, optimizar, this.Z, this.descripcionZ );
-    }
-
-    public String getInterpretacion() {
-        return interpretacion;
-    }
-
     @Override
     public String toString() {
         return "Objetivo{" + "Z=" + Z + ", coefX=" + coefX + ", X=" + X + ", coefY=" + coefY + ", Y=" + Y + ", variableX=" + variableX + ", variableY=" + variableY + '}';
@@ -134,6 +127,5 @@ public class Objetivo {
             }          
         }
         Z = valZ;
-        setInterpretacion();
     }
 }

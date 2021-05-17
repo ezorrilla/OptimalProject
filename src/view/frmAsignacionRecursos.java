@@ -5,12 +5,15 @@ import controller.AsignacionRecursosController;
 import controller.ProcesamientoController;
 import controller.RecursosController;
 import controller.RestriccionesAdController;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 
 public class frmAsignacionRecursos extends javax.swing.JFrame {
 
     public frmAsignacionRecursos() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,16 +21,16 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblVariable1X = new javax.swing.JLabel();
+        lblVariable1Y = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         spnMaterialV1 = new javax.swing.JSpinner();
         spnMaterialV2 = new javax.swing.JSpinner();
-        jLabel8 = new javax.swing.JLabel();
+        lblVariable2Y = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         spnRRHHV1 = new javax.swing.JSpinner();
         spnRRHHV2 = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
+        lblVariable2X = new javax.swing.JLabel();
         btnProcesar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnRestriccionesAd = new javax.swing.JButton();
@@ -38,23 +41,23 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setText("Asigna tus recursos");
 
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Varable 1");
+        lblVariable1X.setForeground(new java.awt.Color(102, 102, 102));
+        lblVariable1X.setText("Varable 1");
 
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Variable 2");
+        lblVariable1Y.setForeground(new java.awt.Color(102, 102, 102));
+        lblVariable1Y.setText("Variable 2");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Material");
 
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Variable 2");
+        lblVariable2Y.setForeground(new java.awt.Color(102, 102, 102));
+        lblVariable2Y.setText("Variable 2");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel4.setText("Recurso Humano");
 
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Varable 1");
+        lblVariable2X.setForeground(new java.awt.Color(102, 102, 102));
+        lblVariable2X.setText("Varable 1");
 
         btnProcesar.setBackground(new java.awt.Color(0, 0, 255));
         btnProcesar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -128,19 +131,19 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
+                                        .addComponent(lblVariable2X)
                                         .addComponent(spnRRHHV1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
+                                        .addComponent(lblVariable1X)
                                         .addComponent(spnMaterialV1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(36, 36, 36)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRestriccionesAd, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
+                    .addComponent(lblVariable2Y)
                     .addComponent(btnProcesar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnRRHHV2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnMaterialV2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblVariable1Y))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -158,8 +161,8 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblVariable1X)
+                    .addComponent(lblVariable1Y, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -167,8 +170,8 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
                     .addComponent(spnMaterialV2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblVariable2X)
+                    .addComponent(lblVariable2Y, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -237,13 +240,13 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
     private javax.swing.JButton btnProcesar;
     private javax.swing.JButton btnRestriccionesAd;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblImagenEmpresa;
+    private javax.swing.JLabel lblVariable1X;
+    private javax.swing.JLabel lblVariable1Y;
+    private javax.swing.JLabel lblVariable2X;
+    private javax.swing.JLabel lblVariable2Y;
     private javax.swing.JSpinner spnMaterialV1;
     private javax.swing.JSpinner spnMaterialV2;
     private javax.swing.JSpinner spnRRHHV1;
@@ -260,6 +263,22 @@ public class frmAsignacionRecursos extends javax.swing.JFrame {
 
     public javax.swing.JSpinner getSpnRRHHV1() {
         return spnRRHHV1;
+    }
+
+    public JLabel getLblVariable1X() {
+        return lblVariable1X;
+    }
+
+    public JLabel getLblVariable1Y() {
+        return lblVariable1Y;
+    }
+
+    public JLabel getLblVariable2X() {
+        return lblVariable2X;
+    }
+
+    public JLabel getLblVariable2Y() {
+        return lblVariable2Y;
     }
 
     public javax.swing.JSpinner getSpnRRHHV2() {

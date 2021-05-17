@@ -45,11 +45,11 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblVariable2X" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="spnRRHHV1" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblVariable1X" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="spnMaterialV1" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -60,11 +60,11 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRestriccionesAd" min="-2" pref="143" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVariable2Y" min="-2" max="-2" attributes="0"/>
                   <Component id="btnProcesar" min="-2" pref="143" max="-2" attributes="0"/>
                   <Component id="spnRRHHV2" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="spnMaterialV2" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVariable1Y" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -87,8 +87,8 @@
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="lblVariable1X" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVariable1Y" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -98,8 +98,8 @@
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="lblVariable2X" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVariable2Y" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -123,7 +123,7 @@
         <Property name="text" type="java.lang.String" value="Asigna tus recursos"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblVariable1X">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -131,7 +131,7 @@
         <Property name="text" type="java.lang.String" value="Varable 1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblVariable1Y">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -151,7 +151,7 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="spnMaterialV2">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="lblVariable2Y">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -171,7 +171,7 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="spnRRHHV2">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblVariable2X">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>

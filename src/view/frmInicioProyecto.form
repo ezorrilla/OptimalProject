@@ -112,7 +112,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmpresa">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu Empresa"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
@@ -155,7 +155,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtActividad">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombra la actividad general de tu proyecto "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSiguiente">
@@ -186,12 +186,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtVariableX">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu primera variable"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtVariableY">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu "/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombra a tu segunda varible"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">

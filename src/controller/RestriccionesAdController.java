@@ -22,7 +22,7 @@ public class RestriccionesAdController {
                                     proyecto.getFuncionObjetivo().getVariableX(),
                                     proyecto.getFuncionObjetivo().getVariableY()};
     }
-        
+            
     public static void mostrarDialogo (JFrame padre) { 
         form = new dlgRestriccionesAd(padre,true);
         formInit();
