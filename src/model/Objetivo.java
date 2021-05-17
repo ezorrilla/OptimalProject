@@ -6,14 +6,17 @@ import java.util.List;
 
 public class Objetivo {
     private double Z;
+    private String descripcionZ;
     public final String Max = "Max";
     public final String Min = "Min";
+    private String optimizacion;
     private int coefX;
     private double X;
     private int coefY;
     private double Y;
     private String variableX;
     private String variableY;
+    private String interpretacion;
     
     public Objetivo(){}
     
@@ -33,6 +36,14 @@ public class Objetivo {
 
     public void setZ(double Z) {
         this.Z = Z;
+    }
+
+    public String getDescripcionZ() {
+        return descripcionZ;
+    }
+
+    public void setDescripcionZ(String descripcionZ) {
+        this.descripcionZ = descripcionZ;
     }
 
     public int getCoefX() {
@@ -82,6 +93,16 @@ public class Objetivo {
     public void setVariableY(String variableY) {
         this.variableY = variableY;
     }
+    
+    private void setInterpretacion() {
+        var optimizar  = this.optimizacion.equalsIgnoreCase(Max) ? "máximo" : "mínimo";
+        this.interpretacion = String.format( "Deben producirse %s %s y %s %s para obtener un valor %s de %s de %s.", 
+                                            this.X, this.variableX, this.Y, this.variableY, optimizar, this.Z, this.descripcionZ );
+    }
+
+    public String getInterpretacion() {
+        return interpretacion;
+    }
 
     @Override
     public String toString() {
@@ -100,16 +121,19 @@ public class Objetivo {
                     X = v.x;
                     Y = v.y;
                     valZ = z;
+                    this.optimizacion = tipoOptimizacion;
                 }
                 
             }else if(tipoOptimizacion.equalsIgnoreCase(Min)){
                 if(z <= valZ){
                     X = v.x;
                     Y = v.y;
-                    valZ = z ;                
+                    valZ = z;
+                    this.optimizacion = tipoOptimizacion;          
                 }
             }          
         }
         Z = valZ;
+        setInterpretacion();
     }
 }

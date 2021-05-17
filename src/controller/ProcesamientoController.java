@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
@@ -16,12 +17,14 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.annotations.XYPolygonAnnotation;
 import org.jfree.chart.annotations.XYTextAnnotation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.Layer;
 import org.jfree.ui.TextAnchor;
 import view.frmProcesamiento;
 
@@ -40,7 +43,7 @@ public class ProcesamientoController {
     public static void ocultar () { form.setVisible(false);} 
     
     public static void dataPrueba(){
-        /*proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        proyecto.getFuncionObjetivo().setVariableX("pantalones");
         proyecto.getFuncionObjetivo().setVariableY("camisas");
         Restriccion r1 = new Restriccion();
         r1.setDescripcion("res1"); r1.setCoefX(1); r1.setCoefY(0); r1.setLimite("<="); r1.setR(4); r1.tabularRecta();
@@ -50,23 +53,23 @@ public class ProcesamientoController {
         r3.setDescripcion("res3"); r3.setCoefX(3); r3.setCoefY(2); r3.setLimite("<="); r3.setR(18); r3.tabularRecta();
         proyecto.getRestricciones().add(r1);
         proyecto.getRestricciones().add(r2);
-        proyecto.getRestricciones().add(r3);*/
+        proyecto.getRestricciones().add(r3);
         
         
-        proyecto.getFuncionObjetivo().setVariableX("pantalones");
+        /*proyecto.getFuncionObjetivo().setVariableX("pantalones");
         proyecto.getFuncionObjetivo().setVariableY("camisas");
         Restriccion r2 = new Restriccion();
         r2.setDescripcion("res2"); r2.setCoefX(4); r2.setCoefY(8); r2.setLimite("<="); r2.setR(480); r2.tabularRecta();
         Restriccion r3 = new Restriccion();
         r3.setDescripcion("res3"); r3.setCoefX(12); r3.setCoefY(8); r3.setLimite("<="); r3.setR(540); r3.tabularRecta();
         proyecto.getRestricciones().add(r2);
-        proyecto.getRestricciones().add(r3);
+        proyecto.getRestricciones().add(r3);*/
     }
     
     private static void formInit(){
+        dataPrueba();
         form.getLblVariableX().setText(proyecto.getFuncionObjetivo().getVariableX());        
         form.getLblVariableY().setText(proyecto.getFuncionObjetivo().getVariableY());
-        //dataPrueba();
         proyecto.getRestricciones().forEach(restriccion -> {
             
             mayorX = restriccion.getEjeX() > mayorX ? restriccion.getEjeX() : mayorX;
@@ -89,18 +92,25 @@ public class ProcesamientoController {
         int coefX = Integer.parseInt(form.getSpnCoefXObjetivo().getValue().toString());
         int coefY = Integer.parseInt(form.getSpnCoefYObjetivo().getValue().toString());
         
-        if (coefX > 0 && coefY > 0){
-            
-            proyecto.getFuncionObjetivo().setCoefX( coefX );
-            proyecto.getFuncionObjetivo().setCoefY( coefY );
-            proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), objetivo);
-            
-            
-            form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().toString());
-            System.out.println(proyecto.getRestricciones().toString());
-        } else {
+        if(form.getTxtDescripcionZ().getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese una descripción de lo que quiere optimizar.", "Validación", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (coefX <= 0 || coefY <= 0){
             JOptionPane.showMessageDialog(null, "Ingrese coeficientes del objetivo mayores a cero.", "Validación", JOptionPane.WARNING_MESSAGE);
-        } 
+            return;
+        }
+        
+        proyecto.getFuncionObjetivo().setDescripcionZ(form.getTxtDescripcionZ().getText());
+            
+        proyecto.getFuncionObjetivo().setCoefX( coefX );
+        proyecto.getFuncionObjetivo().setCoefY( coefY );
+        proyecto.getFuncionObjetivo().calcularObjetivo(proyecto.getVertices(), objetivo);
+
+
+        form.getLblSugerencia().setText(proyecto.getFuncionObjetivo().getInterpretacion());
+        System.out.println(proyecto.getRestricciones().toString());
+        
     }
     
     public static void graficar(){
@@ -173,32 +183,6 @@ public class ProcesamientoController {
             dataset.addSeries(recta);
         });
         
-        /*XYSeries series1 = new XYSeries("Object 1");
-        XYSeries series2 = new XYSeries("Object 2");
-        XYSeries series3 = new XYSeries("Object 3");
-
-        series1.add(1.0, 2.0);
-        series1.add(2.0, 3.0);
-        series1.add(3.0, 2.5);
-        series1.add(3.5, 2.8);
-        series1.add(4.2, 6.0);
-
-        series2.add(2.0, 1.0);
-        series2.add(2.5, 2.4);
-        series2.add(3.2, 1.2);
-        series2.add(3.9, 2.8);
-        series2.add(4.6, 3.0);
-
-        series3.add(1.2, 4.0);
-        series3.add(2.5, 4.4);
-        series3.add(3.8, 4.2);
-        series3.add(4.3, 3.8);
-        series3.add(4.5, 4.0);
-
-        dataset.addSeries(series1);
-        dataset.addSeries(series2);
-        dataset.addSeries(series3);*/
-
         return dataset;
     }
     
@@ -218,15 +202,21 @@ public class ProcesamientoController {
             renderer.setSeriesStroke(i, new BasicStroke(4.0f));
         }
         
+        double[] polygon = new double[proyecto.getVertices().size()*2];
+        for (int i = 0; i < proyecto.getVertices().size(); i++) {
+            Point2D.Double get = proyecto.getVertices().get(i);
+            polygon[i*2] = get.x;
+            polygon[i*2+1] = get.y;
+        }
+        
+        XYPolygonAnnotation a = new XYPolygonAnnotation(polygon, null, null,
+                new Color(200, 200, 255, 100));
+        a.setToolTipText("Target Zone");
+        renderer.addAnnotation(a, Layer.BACKGROUND);
+        plot.addAnnotation(a);
+            
         /*// sets paint color for each series
-        renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesPaint(1, Color.GREEN);
-        renderer.setSeriesPaint(2, Color.YELLOW);
-
-        // sets thickness for series (using strokes)
-        renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(1, new BasicStroke(3.0f));
-        renderer.setSeriesStroke(2, new BasicStroke(2.0f));*/
+        renderer.setSeriesPaint(0, Color.RED);*/
 
         // sets paint color for plot outlines
         plot.setOutlinePaint(Color.BLUE);

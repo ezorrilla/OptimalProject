@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.geom.Line2D;
 import java.util.List;
 import java.util.Comparator;
 import java.util.Collections;
@@ -10,11 +11,13 @@ public class Modelo {
     private Objetivo funcionObjetivo;
     private ArrayList<Restriccion> restricciones;
     private List<Point2D.Double> vertices;
+    private List<Line2D> aristasRegion;
     
     public Modelo(){
         this.funcionObjetivo = new Objetivo();
         this.restricciones = new ArrayList<Restriccion>();
         this.vertices = new ArrayList<>();
+        this.aristasRegion = new ArrayList<>();
     }
     
     public Modelo(Objetivo funcionObjetivo, ArrayList<Restriccion> restricciones, ArrayList<Point2D.Double> vertices) {
@@ -54,7 +57,9 @@ public class Modelo {
     
     //Métodos
     public void intersectarRectas(){
-        verticesEjes();
+        //verticesEjes();
+        this.vertices.clear();
+        this.vertices.add(new Point2D.Double(0,0));
         
         for (int i = 0; i < restricciones.size(); i++) {
             Restriccion R1 = restricciones.get(i);
@@ -177,11 +182,35 @@ public class Modelo {
         R = limitR1 + limitR2;
 
         Y = (double)R / cY;
-        
+            
         //Validar si forma parte de la región factible
-        if (enRegionFactible(X,Y))
-            this.vertices.add(new Point2D.Double(X,Y));
-           
+        Point2D.Double vi = new Point2D.Double(X,Y);
+        if (enRegionFactible(vi.x, vi.y)){
+            this.vertices.add(vi);
+            
+            Point2D.Double p1 = new Point2D.Double(R1.getEjeX(), 0);
+            Point2D.Double p2 = new Point2D.Double(0, R1.getEjeY());
+            Point2D.Double p3 = new Point2D.Double(R2.getEjeX(), 0);
+            Point2D.Double p4 = new Point2D.Double(0, R2.getEjeY());
+            
+            //Validar vertices en Ejes
+            if (enRegionFactible(p1.x, p1.y)){
+                this.vertices.add(new Point2D.Double(p1.x, p1.y));
+                this.aristasRegion.add(new Line2D.Double(p1, vi));
+            }
+            if (enRegionFactible(p2.x, p2.y)){
+                this.vertices.add(new Point2D.Double(p2.x, p2.y));
+                this.aristasRegion.add(new Line2D.Double(p2, vi));
+            }
+            if (enRegionFactible(p3.x, p3.y)){
+                this.vertices.add(new Point2D.Double(p3.x, p3.y));
+                this.aristasRegion.add(new Line2D.Double(p3, vi));
+            }
+            if (enRegionFactible(p4.x, p4.y)){
+                this.vertices.add(new Point2D.Double(p4.x, p4.y));
+                this.aristasRegion.add(new Line2D.Double(p4, vi));
+            }            
+        }           
     }
     
     
@@ -197,8 +226,28 @@ public class Modelo {
         Y = (double)(  ( limitR1 - (R1.getCoefX() * X) ) / R1.getCoefY()  );
                 
         //Validar si forma parte de la región factible
-        if (enRegionFactible(X,Y))
-            this.vertices.add(new Point2D.Double(X,Y));
+        Point2D.Double vi = new Point2D.Double(X,Y);
+        if (enRegionFactible(vi.x, vi.y)){
+            this.vertices.add(vi);
+            
+            Point2D.Double p1 = new Point2D.Double(R1.getEjeX(), 0);
+            Point2D.Double p2 = new Point2D.Double(0, R1.getEjeY());
+            Point2D.Double p3 = new Point2D.Double(0, R2.getEjeY());
+            
+            //Validar vertices en Ejes
+            if (enRegionFactible(p1.x, p1.y)){
+                this.vertices.add(new Point2D.Double(p1.x, p1.y));
+                this.aristasRegion.add(new Line2D.Double(p1, vi));
+            }
+            if (enRegionFactible(p2.x, p2.y)){
+                this.vertices.add(new Point2D.Double(p2.x, p2.y));
+                this.aristasRegion.add(new Line2D.Double(p2, vi));
+            }
+            if (enRegionFactible(p3.x, p3.y)){
+                this.vertices.add(new Point2D.Double(p3.x, p3.y));
+                this.aristasRegion.add(new Line2D.Double(p3, vi));
+            }       
+        }
     }
     
     
@@ -212,10 +261,30 @@ public class Modelo {
         
         //Remplazando Y
         X = (double)(  ( limitR1 - (R1.getCoefY() * Y) ) / R1.getCoefX()  );
-        
+                        
         //Validar si forma parte de la región factible
-        if (enRegionFactible(X,Y))
-            this.vertices.add(new Point2D.Double(X,Y));
+        Point2D.Double vi = new Point2D.Double(X,Y);
+        if (enRegionFactible(vi.x, vi.y)){
+            this.vertices.add(vi);
+            
+            Point2D.Double p1 = new Point2D.Double(R1.getEjeX(), 0);
+            Point2D.Double p2 = new Point2D.Double(0, R1.getEjeY());
+            Point2D.Double p3 = new Point2D.Double(R2.getEjeX(), 0);
+            
+            //Validar vertices en Ejes
+            if (enRegionFactible(p1.x, p1.y)){
+                this.vertices.add(new Point2D.Double(p1.x, p1.y));
+                this.aristasRegion.add(new Line2D.Double(p1, vi));
+            }
+            if (enRegionFactible(p2.x, p2.y)){
+                this.vertices.add(new Point2D.Double(p2.x, p2.y));
+                this.aristasRegion.add(new Line2D.Double(p2, vi));
+            }
+            if (enRegionFactible(p3.x, p3.y)){
+                this.vertices.add(new Point2D.Double(p3.x, p3.y));
+                this.aristasRegion.add(new Line2D.Double(p3, vi));
+            }       
+        }
     }
     
     private void verticePerpendicular(Restriccion R1Horizontal, Restriccion R2Vertical){
@@ -224,9 +293,25 @@ public class Modelo {
         Y = R1Horizontal.getEjeY();        
         X = R2Vertical.getEjeX();
         
+            
         //Validar si forma parte de la región factible
-        if (enRegionFactible(X,Y))
-            this.vertices.add(new Point2D.Double(X,Y));
+        Point2D.Double vi = new Point2D.Double(X,Y);
+        if (enRegionFactible(vi.x, vi.y)){
+            this.vertices.add(vi);
+            
+            Point2D.Double p1 = new Point2D.Double(R2Vertical.getEjeX(), 0);
+            Point2D.Double p2 = new Point2D.Double(0, R1Horizontal.getEjeY());
+            
+            //Validar vertices en Ejes
+            if (enRegionFactible(p1.x, p1.y)){
+                this.vertices.add(new Point2D.Double(p1.x, p1.y));
+                this.aristasRegion.add(new Line2D.Double(p1, vi));
+            }
+            if (enRegionFactible(p2.x, p2.y)){
+                this.vertices.add(new Point2D.Double(p2.x, p2.y));
+                this.aristasRegion.add(new Line2D.Double(p2, vi));
+            }
+        }
     }
   
 }

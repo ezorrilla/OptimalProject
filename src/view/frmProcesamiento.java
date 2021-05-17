@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,10 +31,9 @@ public class frmProcesamiento extends javax.swing.JFrame {
         pnlGrafico = new javax.swing.JPanel();
         btnMinimizar = new javax.swing.JButton();
         btnMaximizar = new javax.swing.JButton();
-        lblRestricciones = new javax.swing.JLabel();
         spnCoefXObjetivo = new javax.swing.JSpinner();
         spnCoefYObjetivo = new javax.swing.JSpinner();
-        txtVariableX = new javax.swing.JTextField();
+        txtDescripcionZ = new javax.swing.JTextField();
         lblVariableX = new javax.swing.JLabel();
         lblVariableY = new javax.swing.JLabel();
         lblVariableY1 = new javax.swing.JLabel();
@@ -49,7 +49,6 @@ public class frmProcesamiento extends javax.swing.JFrame {
         lblImagenEmpresa1.setMaximumSize(new java.awt.Dimension(981, 768));
 
         lblSugerencia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblSugerencia.setText("Si quieres minimizar el costo tendras que trabajar 12 casas y 10 Departamentos");
 
         btnAtras.setBackground(new java.awt.Color(255, 255, 255));
         btnAtras.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -105,10 +104,7 @@ public class frmProcesamiento extends javax.swing.JFrame {
             }
         });
 
-        lblRestricciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblRestricciones.setText("Si quieres minimizar el costo tendras que trabajar 12 casas y 10 Departamentos");
-
-        txtVariableX.setToolTipText("Nombra a tu ");
+        txtDescripcionZ.setToolTipText("Nombra a tu ");
 
         lblVariableX.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblVariableX.setText("Variable1");
@@ -135,7 +131,7 @@ public class frmProcesamiento extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVariableY1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescripcionZ, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,10 +145,8 @@ public class frmProcesamiento extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRestricciones))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 868, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -183,21 +177,19 @@ public class frmProcesamiento extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnCoefYObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(spnCoefXObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVariableX, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescripcionZ, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)))
                 .addGap(18, 18, 18)
                 .addComponent(lblSugerencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblRestricciones)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(46, 46, 46)
                         .addComponent(pnlGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
+                        .addGap(162, 162, 162)
                         .addComponent(lblImagenEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)))
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7))
         );
@@ -222,16 +214,16 @@ public class frmProcesamiento extends javax.swing.JFrame {
         return pnlGrafico;
     }
 
-    public JLabel getLblRestricciones() {
-        return lblRestricciones;
-    }
-
     public JSpinner getSpnCoefXObjetivo() {
         return spnCoefXObjetivo;
     }
 
     public JSpinner getSpnCoefYObjetivo() {
         return spnCoefYObjetivo;
+    }
+
+    public JTextField getTxtDescripcionZ() {
+        return txtDescripcionZ;
     }
 
     public JLabel getLblVariableX() {
@@ -251,7 +243,6 @@ public class frmProcesamiento extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblImagenEmpresa1;
-    private javax.swing.JLabel lblRestricciones;
     private javax.swing.JLabel lblSugerencia;
     private javax.swing.JLabel lblVariableX;
     private javax.swing.JLabel lblVariableY;
@@ -259,6 +250,6 @@ public class frmProcesamiento extends javax.swing.JFrame {
     private javax.swing.JPanel pnlGrafico;
     private javax.swing.JSpinner spnCoefXObjetivo;
     private javax.swing.JSpinner spnCoefYObjetivo;
-    private javax.swing.JTextField txtVariableX;
+    private javax.swing.JTextField txtDescripcionZ;
     // End of variables declaration//GEN-END:variables
 }
